@@ -1,5 +1,7 @@
 <%= form_for @courses do |form| %>
 <%= render partial: '/courses/form', object: form %>
-<%= form.submit "Submit" %>
+<p>Course details cannot be altered after submit. Please check and confirm before submitting.</p>
+<%= form.submit "Submit" %><br>
 <% end %>
+<%= link_to "Back to main page", root_path %>
 

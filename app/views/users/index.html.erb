@@ -1,5 +1,6 @@
 <h1> Welcome to Code District <h1>
 <h2>By coders. For coders.</h2>
 
-<%= link_to "See Courses Now", courses_path %>
+<%= link_to "My Profile", user_path(current_user.id) %><br>
+<%= link_to "See Courses Now", courses_path %><br>
 <%= link_to "Offer a Course Now", new_course_path %>

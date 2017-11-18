@@ -3,6 +3,8 @@ Rails.application.routes.draw do
  
 	root 'users#index'
 	resources :courses
+	resources :user_courses
+	resources :users, except: :index
 
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
