@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <!-- <th>id</th> -->
+      <th>Title</th>
+      <th>Description</th>
+      <th>Duration(Weeks)</th>
+      <th>Maximum students</th>      
+    </tr>
+  </thead>
+
+  <tbody>   
+      <% @courses.each do |c| %>     
+        <tr>
+          <td><%= c.title %></td>
+          <td><%= c.description %></td>
+          <td><%= c.duration %></td>
+          <td><%= c.max_student %></td>           
+      <% end %>
+      </tr>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', root_path %>
