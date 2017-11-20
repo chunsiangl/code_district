@@ -10,13 +10,21 @@ class CoursesController < ApplicationController
 	def create
 		@courses = Course.create(course_params)
 		redirect_to @courses
-end
+	end
+
+	def verify
+        @courses = Course.find(params[:id])
+        @courses.verified = true
+        @courses.save
+        redirect_to courses_path 
+    end
+
 
 
 private
 
 	def course_params
-		 params.require(:course).permit(:title, :description, :duration, :max_student)
+		 params.require(:course).permit(:title, :description, :duration, :max_student, :verified)
 	end
 
 end
