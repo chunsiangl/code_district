@@ -1,5 +1,7 @@
 {
   "name": "code_district",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
 }

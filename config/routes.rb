@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 	get '/signup' => 'users#new'
 	post '/users' => 'users#create'
 	post "/courses/:id/verify" => "courses#verify", as: "verify"
+	post "/user_courses/attend" => "user_courses#attend", as: "attend"
+	get '/search', to: "courses#search", as: "search"
 end

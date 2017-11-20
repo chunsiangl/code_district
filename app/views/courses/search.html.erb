@@ -1,0 +1,48 @@
+<%= form_tag(search_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
+<%= submit_tag "Search" %>
+<% end %>
+<br>
+
+<%= @message if @message %>
+
+<% if params[:search] %>
+  <% if @course.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Duration(Weeks)</th>
+          <th>Maximum students</th> 
+          <th></th>     
+        </tr>
+       </thead>
+          <tbody>
+            <% @course.each do |c| %>
+            <% if c.verified == true %>    
+              <tr>
+                <td><%= c.title %></td>
+                <td><%= c.description %></td>
+                <td><%= c.duration %></td>
+                <td><%= c.max_student %></td> 
+                <% if current_user.student? %>
+                <td>
+                   <%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
+                        <%= x.hidden_field :course_id, value: c.id %>
+                        <%= x.hidden_field :user_id, value: current_user.id %> 
+                        <%= submit_tag "Join this" %>
+                        <% end %>
+                </td> 
+                <% end %>  
+              <td><%= link_to "See More", course_path(c.id) %></td>                   
+              </tr>
+              <% end %>
+          </tbody>
+      <% end %>
+    </table>
+  <% else %>
+    <p> There are no courses containing the term(s) <%= params[:search] %>.</p> 
+  <% end %>
+<% end %>
+<%= link_to "Back to courses", courses_path %>

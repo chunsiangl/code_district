@@ -21,7 +21,17 @@
           <td><%= c.title %></td>
           <td><%= c.description %></td>
           <td><%= c.duration %></td>
-          <td><%= c.max_student %></td>          
+          <td><%= c.max_student %></td> 
+          <td><%= link_to 'See More', course_path(c.id)%></td>
+          <% if current_user.student? %>
+          <td>
+             <%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
+                  <%= x.hidden_field :course_id, value: c.id %>
+                  <%= x.hidden_field :user_id, value: current_user.id %> 
+                  <%= submit_tag "Join this" %>
+                  <% end %>
+          </td> 
+          <% end %>        
         </tr>
       <% end %>
       <% end %>
@@ -36,6 +46,7 @@
           <td><%= c.duration %></td>
           <td><%= c.max_student %></td>
           <td><%= c.verified %></td>
+          <td><%= link_to 'See More', course_path(c.id)%></td>
           <td><%= button_to "Verify this", verify_path(c)%><td>          
         </tr>
       <% end %>
@@ -44,5 +55,5 @@
 
 </table>
 
-
+<%= link_to "Search listings", search_path %><br>
 <%= link_to 'Back to main page', root_path %>
