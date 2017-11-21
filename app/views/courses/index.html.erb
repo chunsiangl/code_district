@@ -1,0 +1,65 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Duration(Weeks)</th>
+      <th>Maximum students</th> 
+      <% if current_user.admin? %>
+        <th>Confirmed</th>
+      <% end %>
+      <th>Slots left</th>    
+    </tr>
+  </thead>
+
+<% if current_user.student? || current_user.mentor? %>
+  <tbody>   
+      <% @courses.each do |c| %> 
+      <% if c.verified == true %>    
+        <tr>
+          <td><%= c.title %></td>
+          <td><%= c.description %></td>
+          <td><%= c.duration %></td>
+          <td><%= c.max_student %></td> 
+           <td><%= c.max_student - UserCourse.where(course_id: c.id).count %></td>
+          <td><%= link_to 'See More', course_path(c.id)%></td>
+          <% if current_user.student? %>"
+          <td>
+             <%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
+                  <%= x.hidden_field :course_id, value: c.id %>
+                  <%= x.hidden_field :user_id, value: current_user.id %> 
+                  <%= submit_tag "I'm interested!", class: "btn btn-secondary" %>
+                  <% end %>
+          </td> 
+          <% end %>        
+        </tr>
+      <% end %>
+      <% end %>
+  </tbody>
+
+  <% elsif current_user.admin? %>
+   <tbody>   
+      <% @courses.each do |c| %>     
+        <tr id='course-<%= c.id %>'>
+          <td><%= c.title %></td>
+          <td><%= c.description %></td>
+          <td><%= c.duration %></td>
+          <td><%= c.max_student %></td>
+          <% if c.verified == true %>
+            <td><%= "Yes"%></td>
+          <% else %>
+            <td><%= "No"%></td>
+          <% end %>
+          <td><%= c.max_student - UserCourse.where(course_id: c.id).count %></td>
+          <td><%= link_to 'See More', course_path(c.id)%></td>
+          <td><%= button_to "Verify this", verify_path(c)%><td>
+          <td><%= link_to 'Kill this', course_path(c.id), class: 'destroy' %></td>          
+        </tr>
+      <% end %>
+  </tbody>
+  <% end %>
+
+</table>
+
+<%= link_to "Search listings", search_path %><br>
+<%= link_to 'Back to main page', root_path %>

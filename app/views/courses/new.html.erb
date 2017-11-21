@@ -1,0 +1,14 @@
+<div class="container">
+	<%= form_for @courses, :html => {:class => "form-horizontal center"}  do |form| %>
+
+<%= render partial: '/courses/form', object: form %>
+
+<p>Course details cannot be altered after submit. Please check and confirm before submitting.</p>
+
+	<div class="submit-field">
+		<%= form.submit "Submit", id: "submit-button" %><br>
+	</div>
+	<% end %>
+</div>
+<%= link_to "Back to main page", root_path %>
+

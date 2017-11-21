@@ -1,0 +1,63 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *
+ *
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+.imagesize{
+    width: 100px;
+    height: 100px;
+    background: none;
+    position: relative;
+    /*animation: mymove 8s infinite;*/
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+/*@keyframes mymove {
+    from {left: 650px;}
+    to {left: 1000px;}
+
+}*/
+
+body {
+   background: url(3.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.row {
+  text-align: center;
+  }
+
+.back{
+  text-align: left;
+  position: relative;
+}
+
+#wrap { 
+	width: 900px; 
+	margin: 0 auto; 
+}
+
+#submit-button {
+	padding: 3px 20px;
+	border: 2px solid black;
+	border-radius: 50px;
+	background-color: white;
+}

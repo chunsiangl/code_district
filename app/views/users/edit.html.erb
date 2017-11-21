@@ -1,0 +1,11 @@
+<h2>Edit your profile</h2>
+
+<%= form_for @user do |f| %>
+
+First Name: <%= f.text_field :first_name %><br>
+Last Name: <%= f.text_field :last_name %><br>
+Email: <%= f.text_field :email %><br>
+Password: <%= f.password_field :password %><br>
+<%= f.submit "Submit" %>
+<% end %>
+<%= link_to "Back to profile page", user_path(@user) %><br>

@@ -5,6 +5,18 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'underscore-rails'
+
+gem 'figaro'
+# Use Geocoder for longitude and latitude
+gem 'geocoder'
+# Use Gmaps4rails to attach Google Maps
+gem 'gmaps4rails'
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'filterrific'
+
 gem 'bcrypt', '~> 3.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -13,7 +25,9 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'
+gem 'jquery-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

@@ -1,2 +1,17 @@
-<h1> Welcome to Code District <h1>
-<h2>By coders. For coders.</h2>
+<div class="row">     
+    <div class="span12">   
+		<h1> Welcome to Code District <h1>
+		<h3>By coders. For aspiring coders.</h3>
+
+		 <% if current_user != nil %>
+		<%= link_to "My Profile", user_path(current_user.id) %><br>
+		<% if current_user.mentor? || current_user.admin? %>
+		<%= link_to "Offer a Course Now", new_course_path %><br>
+		<% end %>
+		<% end %>
+
+		<%= link_to "See Courses Now", courses_path %><br>
+	</div> 
+</div>
+
+
