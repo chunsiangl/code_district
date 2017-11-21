@@ -1,15 +1,14 @@
-<table>
+<table class="table">
   <thead>
     <tr>
-      <!-- <th>id</th> -->
       <th>Title</th>
       <th>Description</th>
       <th>Duration(Weeks)</th>
       <th>Maximum students</th> 
       <% if current_user.admin? %>
-      <th>Confirmed</th>
+        <th>Confirmed</th>
       <% end %>
-      <th></th>     
+      <th>Slots left</th>    
     </tr>
   </thead>
 
@@ -22,13 +21,14 @@
           <td><%= c.description %></td>
           <td><%= c.duration %></td>
           <td><%= c.max_student %></td> 
+           <td><%= c.max_student - UserCourse.where(course_id: c.id).count %></td>
           <td><%= link_to 'See More', course_path(c.id)%></td>
-          <% if current_user.student? %>
+          <% if current_user.student? %>"
           <td>
              <%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
                   <%= x.hidden_field :course_id, value: c.id %>
                   <%= x.hidden_field :user_id, value: current_user.id %> 
-                  <%= submit_tag "Join this" %>
+                  <%= submit_tag "I'm interested!", class: "btn btn-secondary" %>
                   <% end %>
           </td> 
           <% end %>        
@@ -40,14 +40,20 @@
   <% elsif current_user.admin? %>
    <tbody>   
       <% @courses.each do |c| %>     
-        <tr>
+        <tr id='course-<%= c.id %>'>
           <td><%= c.title %></td>
           <td><%= c.description %></td>
           <td><%= c.duration %></td>
           <td><%= c.max_student %></td>
-          <td><%= c.verified %></td>
+          <% if c.verified == true %>
+            <td><%= "Yes"%></td>
+          <% else %>
+            <td><%= "No"%></td>
+          <% end %>
+          <td><%= c.max_student - UserCourse.where(course_id: c.id).count %></td>
           <td><%= link_to 'See More', course_path(c.id)%></td>
-          <td><%= button_to "Verify this", verify_path(c)%><td>          
+          <td><%= button_to "Verify this", verify_path(c)%><td>
+          <td><%= link_to 'Kill this', course_path(c.id), class: 'destroy' %></td>          
         </tr>
       <% end %>
   </tbody>

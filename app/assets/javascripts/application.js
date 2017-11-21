@@ -11,7 +11,27 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require underscore
 //= require gmaps/google
+//= require jquery
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){
+	$('.destroy').on('click', function(event){
+		event.preventDefault()
+		console.log("enter");
+		if(confirm("Sure ah?")){
+			var token = document.querySelector('meta[name="csrf-token"]')["content"]
+			$.ajax({
+				url: event.currentTarget.href,
+				method: 'DELETE',
+				data: { authenticity_token: token },
+				dataType: 'json',
+				success: function(r){
+					$('#course-' + r.id).remove()
+				}
+			});
+		}
+	});
+});

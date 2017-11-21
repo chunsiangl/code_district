@@ -1,18 +1,37 @@
+<div class="form-group">
+	<div class="col-md-4">
+		<%= form.label "Title" %>
+		<%= form.text_field :title, :required => 'required', class: "form-control", class: "form-control", class: "form-control" %>
+	</div>
+</div>
 
-<%= form.label "Title" %>
-<%= form.text_field :title, :required => 'required' %><br>
+<div class="form-group">
+	<div class="col-md-4">
+		<%= form.label "Description" %>
+		<%= form.text_field :description, :required => 'required', class: "form-control", class: "form-control" %>
+	</div>
+</div>
 
-<%= form.label "Description" %>
-<%= form.text_field :description, :required => 'required' %><br>
+<div class="form-group">
+	<div class="col-md-4">
+		<%= form.label "Duration(Weeks)" %>
+		<%= form.number_field :duration, :required => 'required', class: "form-control" %>
+	</div>
+</div>
 
-<%= form.label "Duration(Weeks)" %>
-<%= form.number_field :duration, :required => 'required' %><br>
+<div class="form-group">
+	<div class="col-md-4">
+		<%= form.label "Maximum Students" %>
+		<%= form.number_field :max_student, :required => 'required', class: "form-control" %>
+	</div>
+</div>
 
-<%= form.label "Maximum Students" %>
-<%= form.number_field :max_student, :required => 'required' %><br>
-
-<%= form.label "Venue" %>
-<%= form.text_field :venue, :rows => "10", style: 'width:100%;', :required => 'required' %><br>
+<div class="form-group">
+	<div class="col-md-4">
+		<%= form.label "Venue" %>
+		<%= form.text_field :venue, :rows => "10", style: 'width:100%;', :required => 'required', class: "form-control" %>
+	</div>
+</div>
 
 
 

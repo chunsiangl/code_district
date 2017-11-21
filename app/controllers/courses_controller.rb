@@ -41,6 +41,16 @@ class CoursesController < ApplicationController
         end 
     end
 
+    def destroy
+       @courses = Course.find(params[:id])
+       @courses.destroy
+
+       respond_to do |format|
+	      format.html { redirect_to courses_path, notice: 'Course was successfully destroyed.' }
+	      format.json { render json: { id: params[:id] } }
+	   end
+    end
+
 
 
 private

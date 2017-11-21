@@ -9,10 +9,13 @@ Description : <%= @course.description %><br>
 Duration(Weeks) : <%= @course.duration %><br>
 Maximum Students :<%= @course.max_student %><br>
 Venue :<%= @course.venue %><br>
+<%= link_to "Back to search", search_path %><br>
+<%= link_to "Back to courses", courses_path %><br>
 
 
-<div style='width: 800px; margin-left: 50px; margin-top: 10px; margin-bottom:20px;'>
-<div id="map" style='width: 700px; height: 400px;'></div>
+
+<div style='width: 800px; margin-left: 0px; margin-top: 10px; margin-bottom:20px;'>
+<div id="map" style='width: 550px; height: 400px;'></div>
 </div>
 
     </div>
@@ -43,12 +46,15 @@ Venue :<%= @course.venue %><br>
     });
     </script>
 
-
-<%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
-<%= x.hidden_field :course_id, value: @course.id %>
-<%= x.hidden_field :user_id, value: current_user.id %> 
-<%= submit_tag "Join this" %>
+<% if current_user.student? %>
+  <div class="row">
+    <%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
+      <%= x.hidden_field :course_id, value: @course.id %>
+      <%= x.hidden_field :user_id, value: current_user.id %> 
+      <%= submit_tag "I'm interested!", class: "btn btn-secondary btn-lg" %>
+    <% end %>
+  </div>
 <% end %>
 
-<%= link_to "Back to search", search_path %>
-<%= link_to "Back to courses", courses_path %>
+
+  

@@ -1,29 +1,40 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>CodeDistrict</title>
     <%= csrf_meta_tags %>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3  /underscore-min.js">
-</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js">
+    </script>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <%= favicon_link_tag '1.jpeg' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div id="flash">
-  <% flash.each do |key, value| -%>
-  <div id="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-  </div>
-</div>
+      <% flash.each do |key, value| -%>
+      <div id="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
   	
-  	<% if current_user %>
-  Signed in as <%= current_user.first_name %> | <%= link_to "Logout", '/logout' %><br>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %><br>
-<% end %>
+  <% if current_user %>
+    Signed in as <%= current_user.first_name %> | <%= link_to "Logout", '/logout' %><br>
+  <% else %>
+    <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %><br>
+  <% end %>
+<br>
 
-
+   <%= link_to root_path do %>
+   <%= image_tag "1.jpeg", class: "imagesize" %>
+   <% end %>
+<div id="wrap">
     <%= yield %>
+  </div>
   </body>
 </html>
