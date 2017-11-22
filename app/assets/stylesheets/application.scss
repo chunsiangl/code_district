@@ -11,8 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *
- *
+ *= require social-share-button
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -60,4 +61,18 @@ body {
 	border: 2px solid black;
 	border-radius: 50px;
 	background-color: white;
+}
+
+
+.social-share-button {
+  .ssb-icon {
+    background-size: 25px 25px;
+    height: 35px;
+    width: 35px;
+  }
+}
+
+.destroy{
+  color: red;
+  font-size: 15px;
 }

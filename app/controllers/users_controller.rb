@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 		    flash[:notice] = "Signed up and logged in."
 		  else
 		    redirect_to '/signup'
+		  	flash[:notice] = @user.errors.full_messages.join(", ")
 		  end
 	end
 

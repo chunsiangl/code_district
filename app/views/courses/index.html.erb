@@ -23,7 +23,7 @@
           <td><%= c.max_student %></td> 
            <td><%= c.max_student - UserCourse.where(course_id: c.id).count %></td>
           <td><%= link_to 'See More', course_path(c.id)%></td>
-          <% if current_user.student? %>"
+          <% if current_user.student? %>
           <td>
              <%= form_for @usercourse, :url => attend_path, :html => {:method => :post} do |x| %>
                   <%= x.hidden_field :course_id, value: c.id %>
@@ -53,7 +53,7 @@
           <td><%= c.max_student - UserCourse.where(course_id: c.id).count %></td>
           <td><%= link_to 'See More', course_path(c.id)%></td>
           <td><%= button_to "Verify this", verify_path(c)%><td>
-          <td><%= link_to 'Kill this', course_path(c.id), class: 'destroy' %></td>          
+          <td><%= link_to 'Reject this', course_path(c.id), class: 'destroy' %></td>          
         </tr>
       <% end %>
   </tbody>

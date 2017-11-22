@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require social-share-button
 //= require underscore
 //= require gmaps/google
 //= require jquery
