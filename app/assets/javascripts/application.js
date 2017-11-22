@@ -17,6 +17,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require flatpickr
 
 $(document).ready(function(){
 	$('.destroy').on('click', function(event){
