@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require social-share-button
 //= require underscore
 //= require gmaps/google
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require flatpickr
 
 $(document).ready(function(){
 	$('.destroy').on('click', function(event){

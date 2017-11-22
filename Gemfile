@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'flatpickr_rails'
+
+gem 'social-share-button' 
+
 gem 'underscore-rails'
 
 gem 'figaro'
@@ -53,6 +57,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

@@ -14,8 +14,13 @@ class CoursesController < ApplicationController
 	end
 
 	def create
-		@courses = Course.create(course_params)
-		redirect_to @courses
+		@courses = Course.new(course_params)
+		if @courses.save
+			redirect_to @courses
+		else
+			render "/courses/new"
+			flash[:notice] = @courses.errors.full_messages.join(", ")
+		end		
 	end
 
 	def show
@@ -56,7 +61,7 @@ class CoursesController < ApplicationController
 private
 
 	def course_params
-		 params.require(:course).permit(:title, :description, :duration, :max_student, :verified, :venue)
+		 params.require(:course).permit(:title, :description, :duration, :max_student, :verified, :venue, :start_date, :end_date)
 	end
 
 end

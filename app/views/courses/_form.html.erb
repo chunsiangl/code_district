@@ -19,6 +19,22 @@
 	</div>
 </div>
 
+ <div class="form-group">
+ 	<div class="col-md-4">
+    <%= form.label "Start Date"%>
+    <%= form.text_field :start_date, id: "flatpickr-start-input", class: "form-control" %>
+      <script>$('#flatpickr-start-input').flatpickr();</script>
+    </div>
+  </div> 
+  
+  <div class="form-group">
+  	<div class="col-md-4">
+    <%= form.label "End Date"%>
+    <%= form.text_field :end_date, id: "flatpickr-end-input", class: "form-control" %>
+      <script>$('#flatpickr-end-input').flatpickr();</script>
+    </div>
+  </div>
+
 <div class="form-group">
 	<div class="col-md-4">
 		<%= form.label "Maximum Students" %>
