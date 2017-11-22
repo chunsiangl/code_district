@@ -24,7 +24,7 @@
               <tr>
                 <td><%= c.title %></td>
                 <td><%= c.description %></td>
-                <td><%= c.duration %></td>
+                <td><%= ((c.end_date - c.start_date).to_i)/7 %></td>
                 <td><%= c.max_student %></td> 
                 <% if current_user.student? %>
                 <td>
