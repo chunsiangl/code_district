@@ -6,7 +6,7 @@
 
 Title: <%= @course.title  %><br>
 Description : <%= @course.description %><br>
-Duration(Weeks) : <%= @course.duration %><br>
+Duration(Weeks) : <%= ((@course.end_date - @course.start_date).to_i)/7 %><br>
 Maximum Students :<%= @course.max_student %><br>
 Venue :<%= @course.venue %><br>
 <%= link_to "Back to search", search_path %><br>
